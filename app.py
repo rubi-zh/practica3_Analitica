@@ -52,7 +52,19 @@ else:
     st.pyplot(fig)
 
     #gráfica 2
-    st.subheader("Porcentaje de juegos ganados y perdidos")
+    st.subheader("Porcentaje de juegos ganados vs perdidos")
+    win_count = (df_fil["game_result"] == "W").sum()
+    loss_count = (df_fil["game_result"] == "L").sum()
+
+    fig2, ax2 = plt.subplots(figsize=(2, 2)) 
+    ax2.pie(
+        [win_count, loss_count],
+        labels=["Ganados", "Perdidos"],
+        autopct="%1.1f%%",
+        colors=["#1447E6", "#C11007"])
+    ax2.axis("equal")  
+    st.pyplot(fig2, use_container_width=False)
+
 
 
 
